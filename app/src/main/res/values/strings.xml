@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Finku❤</string>
+    <string name="title_home">Home</string>
+    <string name="add_recap">Add Recap</string>
+    <string name="profile">Profile</string>
+    <string name="logo">LOGO</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="vector">vector</string>
+    <string name="browse_file">Browse File</string>
+    <string name="imageview">imageview</string>
+    <string name="analyze">Analyze</string>
+    <string name="result">result</string>
+    <string name="upload_your_bank_mutation_using_png_jpg_or_webp_format">Upload your bank mutation using png, jpg, or webp format.</string>
+    <string name="your_recap_lists">Your Recap Lists</string>
+    <string name="welcome_back">Welcome back</string>
+    <string name="transaction_date">Transaction Date:</string>
+    <string name="type">Type:</string>
+    <string name="amount">Amount:</string>
+    <string name="moredetail">moreDetail</string>
+    <string name="edit_result">Edit Result</string>
+    <string name="save">Save</string>
+    <string name="total_debit">Total Debit:</string>
+    <string name="total_credit">Total Credit:</string>
+    <string name="difference">Difference:</string>
+    <string name="mutation_date">Mutation Date:</string>
+</resources>
