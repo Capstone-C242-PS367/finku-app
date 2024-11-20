@@ -1,4 +1,4 @@
-package com.capstone.finku.ui
+package com.capstone.finku.ui.activity.welcome
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

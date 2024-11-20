@@ -1,10 +1,11 @@
-package com.capstone.finku
+package com.capstone.finku.ui.activity.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.capstone.finku.R
 import com.capstone.finku.databinding.ActivityMainBinding
-import com.capstone.finku.ui.HomeFragment
-import com.capstone.finku.ui.UploadImageFragment
+import com.capstone.finku.ui.fragment.home.HomeFragment
+import com.capstone.finku.ui.fragment.uploadimage.UploadImageFragment
 
 
 class MainActivity : AppCompatActivity() {
