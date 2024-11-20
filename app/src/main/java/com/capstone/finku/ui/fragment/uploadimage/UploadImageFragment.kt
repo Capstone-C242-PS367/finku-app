@@ -1,4 +1,4 @@
-package com.capstone.finku.ui
+package com.capstone.finku.ui.fragment.uploadimage
 
 import android.net.Uri
 import android.os.Bundle
@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.capstone.finku.R
 import com.capstone.finku.databinding.FragmentUploadImageBinding
+import com.capstone.finku.ui.fragment.ocrresult.OcrResultFragment
 
 
 class UploadImageFragment : Fragment() {
