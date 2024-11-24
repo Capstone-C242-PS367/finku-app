@@ -1,4 +1,4 @@
-package com.capstone.finku.ui.fragment.ocrresult
+package com.capstone.finku.ui.fragment.history
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,19 +7,18 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.capstone.finku.R
-import com.capstone.finku.databinding.FragmentOcrResultBinding
-import com.capstone.finku.ui.fragment.history.HistoryFragment
+import com.capstone.finku.databinding.FragmentHistoryBinding
 
-class OcrResultFragment : Fragment() {
-    private lateinit var binding: FragmentOcrResultBinding
+
+class HistoryFragment : Fragment() {
+    private lateinit var binding: FragmentHistoryBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentOcrResultBinding.inflate(inflater, container, false)
+        binding = FragmentHistoryBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -27,20 +26,13 @@ class OcrResultFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val activity = requireActivity() as AppCompatActivity
         activity.setSupportActionBar(binding.toolbar)
-        activity.supportActionBar?.title = "Result"
+        activity.supportActionBar?.title = "Histories"
         setupRecyclerView()
-
-        binding.btnSave.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.container, HistoryFragment())
-                .commit()
-        }
     }
 
     private fun setupRecyclerView() {
-        binding.rvResult.apply {
+        binding.rvHistory.apply {
             layoutManager = LinearLayoutManager(context)
-            //adapter = RecapAdapter()
         }
     }
 }
