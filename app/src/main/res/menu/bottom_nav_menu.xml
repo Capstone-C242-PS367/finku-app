@@ -9,7 +9,7 @@
         android:icon="@drawable/baseline_add_24"
         android:title="@string/add_recap" />
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_profile"
         android:icon="@drawable/baseline_profile_24"
         android:title="@string/profile" />
 </menu>

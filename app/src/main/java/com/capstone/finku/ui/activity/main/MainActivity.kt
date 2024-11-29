@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.capstone.finku.R
 import com.capstone.finku.databinding.ActivityMainBinding
 import com.capstone.finku.ui.fragment.home.HomeFragment
+import com.capstone.finku.ui.fragment.profile.ProfileFragment
 import com.capstone.finku.ui.fragment.uploadimage.UploadImageFragment
 
 
@@ -38,12 +39,12 @@ class MainActivity : AppCompatActivity() {
                         .commit()
                     true
                 }
-//                R.id.navigation_profile -> {
-//                    supportFragmentManager.beginTransaction()
-//                        .replace(R.id.container, ProfileFragment())
-//                        .commit()
-//                    true
-//                }
+                R.id.navigation_profile -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.container, ProfileFragment())
+                        .commit()
+                    true
+                }
                 else -> false
             }
         }

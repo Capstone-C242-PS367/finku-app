@@ -78,4 +78,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="email">Email</string>
     <string name="full_name">Full Name</string>
+    <string name="success_title">Berhasil</string>
+    <string name="success_message">Register berhasil</string>
+    <string name="registration_failed">Pendaftaran Gagal</string>
+    <string name="ok">Lanjutkan</string>
+    <string name="login_failed_message">Login gagal, silakan coba lagi.</string>
+    <string name="change_language">Ubah Bahasa</string>
+    <string name="change_theme">Ubah Tema</string>
+    <string name="logout">Logout</string>
 </resources>
