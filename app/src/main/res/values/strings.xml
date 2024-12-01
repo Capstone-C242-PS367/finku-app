@@ -86,4 +86,7 @@
     <string name="change_language">Ubah Bahasa</string>
     <string name="change_theme">Ubah Tema</string>
     <string name="logout">Logout</string>
+    <string name="welcome_subtitle">Just upload your mutation bank and AI will generate your recap!</string>
+    <string name="welcome_title">AI Tech Based</string>
+    <string name="version_app">Version 1.0</string>
 </resources>
