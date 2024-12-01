@@ -13,7 +13,6 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-        buildConfigField("String", "BASE_URL", "\"https://finku-api-4eb2gjdwbq-et.a.run.app/\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -24,6 +23,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "BASE_URL", "\"https://finku-api-4eb2gjdwbq-et.a.run.app/\"")
+        }
+        debug {
+            buildConfigField("String", "BASE_URL", "\"https://finku-api-4eb2gjdwbq-et.a.run.app/\"")
         }
     }
     compileOptions {

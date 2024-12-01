@@ -29,6 +29,9 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun initActions() {
+        binding.btnLogin.setOnClickListener {
+            navigateToLogin()
+        }
         binding.btnRegister.setOnClickListener {
             val name = binding.fullnameEditText.text.toString().trim()
             val email = binding.emailEditText.text.toString().trim()

@@ -1,4 +1,3 @@
 package com.capstone.finku.ui.fragment.uploadimage
 
-class UploadImageViewModel {
-}
+class UploadImageViewModel

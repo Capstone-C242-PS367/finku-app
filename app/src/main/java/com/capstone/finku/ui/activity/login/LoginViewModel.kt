@@ -1,6 +1,5 @@
 package com.capstone.finku.ui.activity.login
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,8 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.capstone.finku.data.pref.UserModel
 import com.capstone.finku.repository.UserRepository
 import kotlinx.coroutines.launch
-import retrofit2.HttpException
-import java.io.IOException
 
 class LoginViewModel(private val repository: UserRepository) : ViewModel() {
 
@@ -21,13 +18,15 @@ class LoginViewModel(private val repository: UserRepository) : ViewModel() {
             _loginStatus.value = try {
                 val response = repository.login(email, password)
                 val token = response.accessToken
+                val nameData = response.name ?: ""
+                val emailData = response.email ?: ""
 
                 if (token != null) {
                     repository.saveSession(
                         UserModel(
                             userId = "",
-                            name = "",
-                            email = email,
+                            name = nameData,
+                            email = emailData,
                             token = token,
                             isLogin = true
                         )
