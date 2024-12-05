@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.capstone.finku.repository.UserRepository
 import com.capstone.finku.ui.activity.login.LoginViewModel
 import com.capstone.finku.ui.activity.register.RegisterViewModel
+import com.capstone.finku.ui.fragment.uploadimage.UploadImageViewModel
 
 
 class ViewModelFactory(private val repository: UserRepository) :

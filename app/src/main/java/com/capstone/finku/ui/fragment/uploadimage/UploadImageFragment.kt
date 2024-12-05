@@ -1,24 +1,35 @@
 package com.capstone.finku.ui.fragment.uploadimage
 
-import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.capstone.finku.R
+import com.capstone.finku.data.TransactionViewModelFactory
+import com.capstone.finku.data.di.Injection
 import com.capstone.finku.databinding.FragmentUploadImageBinding
 import com.capstone.finku.ui.fragment.ocrresult.OcrResultFragment
+import com.capstone.finku.utils.FileHandler
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
 
 
 class UploadImageFragment : Fragment() {
 
-    private lateinit var binding:FragmentUploadImageBinding
-    private var image: Uri? = null
+    private lateinit var binding: FragmentUploadImageBinding
+    private val uploadImageViewModel: UploadImageViewModel by viewModels {
+        TransactionViewModelFactory(Injection.provideTransactionRepository(requireContext()))
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,34 +53,79 @@ class UploadImageFragment : Fragment() {
         binding.apply {
             browseFile.setOnClickListener { startGallery() }
             analyze.setOnClickListener { analyzeImage() }
+            loading.visibility = View.GONE
+        }
+
+        showImage()
+
+        uploadImageViewModel.apply {
+            message.observe(viewLifecycleOwner) {
+                showToast(it ?: "")
+            }
+
+            isLoading.observe(viewLifecycleOwner) {
+                showLoading(it)
+                disableSubmit(it)
+            }
         }
     }
 
     private fun analyzeImage() {
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.container, OcrResultFragment())
-            .commit()
+        uploadImageViewModel.imageUri.observe(viewLifecycleOwner) {
+            Log.d("URI", it.toString())
+            val imageFile = FileHandler().uriToFile(it, requireContext())
+            val requestImageFile = imageFile.asRequestBody("image/*".toMediaType())
+            val multipartBody = requestImageFile.let { it1 ->
+                MultipartBody.Part.createFormData(
+                    "file",
+                    imageFile.name,
+                    it1
+                )
+            }
+            uploadImageViewModel.predict(multipartBody)
+        }
+//        requireActivity().supportFragmentManager.beginTransaction()
+//            .replace(R.id.container, OcrResultFragment())
+//            .commit()
     }
 
     private fun startGallery() {
         launcherGallery.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
     }
 
-    private val launcherGallery = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
-        if (uri != null) {
-            image = uri
-            showImage()
-            binding.analyze.isEnabled = true
-            binding.analyze.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.blue)
-        } else {
-            binding.analyze.isEnabled = false
+    private val launcherGallery =
+        registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
+            if (uri != null) {
+                uploadImageViewModel.persistImage(uri)
+                binding.analyze.isEnabled = true
+                binding.analyze.backgroundTintList =
+                    ContextCompat.getColorStateList(requireContext(), R.color.blue)
+            } else {
+                binding.analyze.isEnabled = false
+            }
+        }
+
+    private fun showImage() {
+        uploadImageViewModel.imageUri.observe(viewLifecycleOwner) { uri ->
+            binding.previewImageView.setImageURI(uri)
         }
     }
 
-    private fun showImage() {
-        image?.let { uri ->
-            binding.previewImageView.setImageURI(uri)
+    private fun showToast(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun showLoading(loading: Boolean) {
+        binding.loading.visibility = if (loading) {
+            View.VISIBLE
+        } else {
+            View.GONE
         }
+    }
+
+    private fun disableSubmit(disabled: Boolean) {
+        val btnDisabled = !disabled
+        binding.analyze.isEnabled = btnDisabled
     }
 }
 

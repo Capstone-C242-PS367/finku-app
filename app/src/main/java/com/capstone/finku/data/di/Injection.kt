@@ -4,6 +4,7 @@ import android.content.Context
 import com.capstone.finku.data.pref.UserPreference
 import com.capstone.finku.data.pref.dataStore
 import com.capstone.finku.data.retrofit.ApiConfig
+import com.capstone.finku.repository.TransactionRepository
 import com.capstone.finku.repository.UserRepository
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
@@ -14,5 +15,12 @@ object Injection {
         val user = runBlocking { pref.getSession().first() }
         val apiService = ApiConfig.getApiService(user.token)
         return UserRepository.getInstance(pref, apiService)
+    }
+
+    fun provideTransactionRepository(context: Context): TransactionRepository {
+        val pref = UserPreference.getInstance(context.dataStore)
+        val user = runBlocking { pref.getSession().first() }
+        val apiService = ApiConfig.getApiService(user.token)
+        return TransactionRepository.getInstance(apiService)
     }
 }
