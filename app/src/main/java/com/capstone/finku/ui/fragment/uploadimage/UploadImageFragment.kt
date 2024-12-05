@@ -12,14 +12,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.capstone.finku.R
 import com.capstone.finku.data.TransactionViewModelFactory
 import com.capstone.finku.data.di.Injection
 import com.capstone.finku.databinding.FragmentUploadImageBinding
-import com.capstone.finku.ui.fragment.ocrresult.OcrResultFragment
 import com.capstone.finku.utils.FileHandler
-import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 
@@ -74,7 +72,12 @@ class UploadImageFragment : Fragment() {
         uploadImageViewModel.imageUri.observe(viewLifecycleOwner) {
             Log.d("URI", it.toString())
             val imageFile = FileHandler().uriToFile(it, requireContext())
-            val requestImageFile = imageFile.asRequestBody("image/*".toMediaType())
+            val mimeType = when (imageFile.extension.lowercase()) {
+                "jpg", "jpeg" -> "image/jpeg"
+                "png" -> "image/png"
+                else -> throw IllegalArgumentException("Unsupported image type")
+            }
+            val requestImageFile = imageFile.asRequestBody(mimeType.toMediaTypeOrNull())  //want send /jpeg|jpg|png/
             val multipartBody = requestImageFile.let { it1 ->
                 MultipartBody.Part.createFormData(
                     "file",

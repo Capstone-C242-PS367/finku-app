@@ -19,7 +19,11 @@ class FileHandler {
         val outputStream = FileOutputStream(myFile)
         val buffer = ByteArray(1024)
         var length: Int
-        while (inputStream.read(buffer).also { length = it } > 0) outputStream.write(buffer, 0, length)
+        while (inputStream.read(buffer).also { length = it } > 0) outputStream.write(
+            buffer,
+            0,
+            length
+        )
         outputStream.close()
         inputStream.close()
         return myFile
