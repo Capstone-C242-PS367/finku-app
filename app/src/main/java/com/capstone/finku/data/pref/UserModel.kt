@@ -1,7 +1,7 @@
 package com.capstone.finku.data.pref
 
 data class UserModel(
-    val userId: String,
+    val id: String,
     val name: String,
     val email: String,
     val token: String,
