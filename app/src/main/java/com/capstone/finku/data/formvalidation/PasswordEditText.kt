@@ -11,11 +11,10 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
 import com.capstone.finku.R
 
+
 class PasswordEditText @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : AppCompatEditText(context, attrs), View.OnTouchListener {
-
-    private val clearButtonImage: Drawable = ContextCompat.getDrawable(context, R.drawable.baseline_close_24)!!
 
     init {
         setOnTouchListener(this)
@@ -32,8 +31,9 @@ class PasswordEditText @JvmOverloads constructor(
     }
 
     override fun onTouch(v: View?, event: MotionEvent): Boolean {
-        if (compoundDrawables[2] != null) {
-            val clearButtonStart = (width - paddingEnd - clearButtonImage.intrinsicWidth).toFloat()
+        val drawable = compoundDrawables[2]
+        if (drawable != null) {
+            val clearButtonStart = (width - paddingEnd - drawable.intrinsicWidth).toFloat()
             val isClearButtonClicked = event.x > clearButtonStart
             if (isClearButtonClicked) {
                 if (event.action == MotionEvent.ACTION_DOWN) {
@@ -51,6 +51,7 @@ class PasswordEditText @JvmOverloads constructor(
     }
 
     private fun showClearButton() {
+        val clearButtonImage = ContextCompat.getDrawable(context, R.drawable.baseline_close_24)
         setButtonDrawables(endOfTheText = clearButtonImage)
     }
 

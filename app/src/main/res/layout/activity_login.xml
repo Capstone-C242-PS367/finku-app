@@ -17,16 +17,6 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tvLogo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
-                android:text="@string/logo"
-                android:textColor="@color/black"
-                android:textSize="28sp"
-                android:textStyle="bold" />
-
             <ImageView
                 android:id="@+id/ivVector"
                 android:layout_width="180dp"
@@ -34,14 +24,14 @@
                 android:layout_marginTop="32dp"
                 android:contentDescription="@string/vector"
                 android:scaleType="centerInside"
-                android:src="@drawable/welcome_image" />
+                android:src="@drawable/finku" />
 
             <TextView
                 android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:text="Lorem Ipsum dolor sit amet\nLorem ipsum"
+                android:text="@string/title_login"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -54,7 +44,7 @@
                 android:layout_marginTop="12dp"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
-                android:text="Neque porro quisquam est qui dolorem ipsum\nquia dolor sit amet, consectetur, adipisci velit..."
+                android:text="@string/subtitle_login"
                 android:textAlignment="center"
                 android:textColor="#666666"
                 android:textSize="14sp" />

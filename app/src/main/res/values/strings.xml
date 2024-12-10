@@ -93,4 +93,7 @@
     <string name="total_credit_amount">0</string>
     <string name="total_debit_amount">0</string>
     <string name="total_difference_amount">0</string>
+    <string name="Subtitle_register">Register your account first to save your recap</string>
+    <string name="subtitle_login">Please fill email and password below. If don\'t have account, please press register button</string>
+    <string name="title_login">Login to start using Finku App</string>
 </resources>
