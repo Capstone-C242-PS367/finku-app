@@ -23,7 +23,7 @@ object Injection {
         val user = runBlocking { pref.getSession().first() }
         val apiService = ApiConfig.getApiService(user.token)
         Log.d("TOKEN", user.token)
-        Log.d("USER ID", user.userId)
+        Log.d("USER ID", user.id)
         return TransactionRepository.getInstance(apiService)
     }
 }

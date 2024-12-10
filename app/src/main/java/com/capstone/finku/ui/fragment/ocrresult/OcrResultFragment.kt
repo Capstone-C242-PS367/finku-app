@@ -51,7 +51,7 @@ class OcrResultFragment : Fragment() {
         binding.apply {
             btnSave.setOnClickListener {
                 val userPref = UserPreference.getInstance(requireContext().dataStore)
-                val userId = runBlocking { userPref.getSession().first() }.userId
+                val userId = runBlocking { userPref.getSession().first() }.id
 
                 val adapter = binding.rvResult.adapter as ListOcrResultAdapter
                 val updatedResults = adapter.getUpdatedResults()

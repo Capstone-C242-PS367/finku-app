@@ -25,7 +25,7 @@ class LoginViewModel(private val repository: UserRepository) : ViewModel() {
                 if (token != null) {
                     repository.saveSession(
                         UserModel(
-                            userId = id,
+                            id = id,
                             name = nameData,
                             email = emailData,
                             token = token,
