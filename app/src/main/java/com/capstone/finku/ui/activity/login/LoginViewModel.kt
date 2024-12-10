@@ -20,11 +20,12 @@ class LoginViewModel(private val repository: UserRepository) : ViewModel() {
                 val token = response.accessToken
                 val nameData = response.name ?: ""
                 val emailData = response.email ?: ""
+                val id = response.id ?: ""
 
                 if (token != null) {
                     repository.saveSession(
                         UserModel(
-                            userId = "",
+                            userId = id,
                             name = nameData,
                             email = emailData,
                             token = token,

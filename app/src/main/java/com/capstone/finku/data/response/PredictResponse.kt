@@ -1,7 +1,10 @@
 package com.capstone.finku.data.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class PredictResponse(
 
 	@field:SerializedName("data")
@@ -12,8 +15,9 @@ data class PredictResponse(
 
 	@field:SerializedName("status")
 	val status: String? = null
-)
+): Parcelable
 
+@Parcelize
 data class ResponseData(
 
 	@field:SerializedName("result")
@@ -27,25 +31,26 @@ data class ResponseData(
 
 	@field:SerializedName("total_debit")
 	val totalDebit: Int? = null
-)
+): Parcelable
 
+@Parcelize
 data class ResultItem(
 
 	@field:SerializedName("date")
-	val date: String? = null,
+	var date: String? = null,
 
 	@field:SerializedName("amount")
-	val amount: Int? = null,
+	var amount: String? = null,
 
 	@field:SerializedName("currency")
 	val currency: String? = null,
 
 	@field:SerializedName("type")
-	val type: String? = null,
+	var type: String? = null,
 
 	@field:SerializedName("category")
 	val category: String? = null,
 
 	@field:SerializedName("title")
-	val title: String? = null
-)
+	var title: String? = null
+): Parcelable

@@ -25,6 +25,9 @@ class UploadImageViewModel(
     private val _predictResult = MutableLiveData<PredictResponse?>()
     val predictResult: LiveData<PredictResponse?> = _predictResult
 
+    private val _fileType = MutableLiveData<String>()
+    val fileType: LiveData<String> = _fileType
+
     fun persistImage(uri: Uri) {
         _imageUri.value = uri
     }
@@ -43,5 +46,20 @@ class UploadImageViewModel(
                 _isLoading.value = false
             }
         }
+    }
+
+    fun setFileType(type: String) {
+        _fileType.value = type
+    }
+
+    fun clearData() {
+        _imageUri.value = Uri.EMPTY
+        _message.value = ""
+        _predictResult.value = PredictResponse(
+            data = null,
+            message = null,
+            status = null
+        )
+        _fileType.value = ""
     }
 }

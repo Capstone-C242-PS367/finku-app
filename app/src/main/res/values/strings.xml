@@ -6,12 +6,13 @@
     <string name="logo">LOGO</string>
     <string name="sign_in_with_google">Sign in with Google</string>
     <string name="vector">vector</string>
-    <string name="browse_file">Browse File</string>
+    <string name="browse_image">Browse Image</string>
+    <string name="browse_pdf">Browse PDF</string>
     <string name="imageview">imageview</string>
     <string name="analyze">Analyze</string>
     <string name="result">result</string>
     <string name="mutation_date">Mutation Date</string>
-    <string name="upload_your_bank_mutation_using_png_jpg_or_webp_format">Upload your bank mutation using png, jpg, or webp format.</string>
+    <string name="upload_your_bank_mutation_using_png_jpg_or_webp_format">Upload your bank mutation using png, jpg, or pdf format.</string>
     <string name="your_recap_lists">Your Recap Lists</string>
     <string name="welcome_back">Welcome back</string>
     <string name="transaction_date">Transaction Date:</string>
@@ -89,4 +90,7 @@
     <string name="welcome_subtitle">Just upload your mutation bank and AI will generate your recap!</string>
     <string name="welcome_title">AI Tech Based</string>
     <string name="version_app">Version 1.0</string>
+    <string name="total_credit_amount">0</string>
+    <string name="total_debit_amount">0</string>
+    <string name="total_difference_amount">0</string>
 </resources>

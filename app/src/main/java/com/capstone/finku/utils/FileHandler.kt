@@ -29,6 +29,29 @@ class FileHandler {
         return myFile
     }
 
+    fun uriToPdfFile(pdfUri: Uri, context: Context): File {
+        // Create a temporary file with a .pdf extension
+        val pdfFile = File.createTempFile("temp_pdf", ".pdf", context.cacheDir)
+
+        // Open input stream from the URI
+        val inputStream = context.contentResolver.openInputStream(pdfUri) ?: throw IllegalArgumentException("Unable to open URI")
+        val outputStream = FileOutputStream(pdfFile)
+
+        // Buffer for transferring bytes
+        val buffer = ByteArray(1024)
+        var length: Int
+        while (inputStream.read(buffer).also { length = it } > 0) {
+            outputStream.write(buffer, 0, length)
+        }
+
+        // Close streams to avoid leaks
+        outputStream.close()
+        inputStream.close()
+
+        return pdfFile
+    }
+
+
     private fun createCustomTempFile(context: Context): File {
         val filesDir = context.externalCacheDir
         return File.createTempFile(timeStamp, ".jpg", filesDir)

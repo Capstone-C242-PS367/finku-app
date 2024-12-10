@@ -3,6 +3,7 @@ package com.capstone.finku.data
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.capstone.finku.repository.TransactionRepository
+import com.capstone.finku.ui.fragment.ocrresult.OcrResultViewModel
 import com.capstone.finku.ui.fragment.uploadimage.UploadImageViewModel
 
 class TransactionViewModelFactory(
@@ -15,7 +16,9 @@ class TransactionViewModelFactory(
             modelClass.isAssignableFrom(UploadImageViewModel::class.java) -> {
                 UploadImageViewModel(repository) as T
             }
-
+            modelClass.isAssignableFrom(OcrResultViewModel::class.java) -> {
+                OcrResultViewModel(repository) as T
+            }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }

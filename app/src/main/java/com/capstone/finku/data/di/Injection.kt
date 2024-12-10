@@ -1,6 +1,7 @@
 package com.capstone.finku.data.di
 
 import android.content.Context
+import android.util.Log
 import com.capstone.finku.data.pref.UserPreference
 import com.capstone.finku.data.pref.dataStore
 import com.capstone.finku.data.retrofit.ApiConfig
@@ -21,6 +22,8 @@ object Injection {
         val pref = UserPreference.getInstance(context.dataStore)
         val user = runBlocking { pref.getSession().first() }
         val apiService = ApiConfig.getApiService(user.token)
+        Log.d("TOKEN", user.token)
+        Log.d("USER ID", user.userId)
         return TransactionRepository.getInstance(apiService)
     }
 }
