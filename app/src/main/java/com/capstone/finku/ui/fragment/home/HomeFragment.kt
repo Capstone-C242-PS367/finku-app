@@ -71,7 +71,6 @@ class HomeFragment : Fragment() {
                 } else {
                     binding.loadingSummary.visibility = View.GONE
                     binding.tvLoading.visibility = View.GONE
-                    binding.summaryPieChart.visibility = View.VISIBLE
                 }
             }
 
@@ -105,9 +104,21 @@ class HomeFragment : Fragment() {
                 if (it?.data?.isEmpty() == true || it?.data == null) {
                     binding.tvEmptyState.visibility = View.VISIBLE
                     binding.summaryPieChart.visibility = View.GONE
+                    binding.vwDebt.visibility = View.GONE
+                    binding.vwCredit.visibility = View.GONE
+                    binding.tvTotalDebtValue.visibility = View.GONE
+                    binding.tvTotalCreditValue.visibility = View.GONE
+                    binding.tvCredit.visibility = View.GONE
+                    binding.tvDebt.visibility = View.GONE
                 } else {
                     binding.tvEmptyState.visibility = View.GONE
                     binding.summaryPieChart.visibility = View.VISIBLE
+                    binding.vwDebt.visibility = View.VISIBLE
+                    binding.vwCredit.visibility = View.VISIBLE
+                    binding.tvTotalDebtValue.visibility = View.VISIBLE
+                    binding.tvTotalCreditValue.visibility = View.VISIBLE
+                    binding.tvCredit.visibility = View.VISIBLE
+                    binding.tvDebt.visibility = View.VISIBLE
                 }
             }
         }
