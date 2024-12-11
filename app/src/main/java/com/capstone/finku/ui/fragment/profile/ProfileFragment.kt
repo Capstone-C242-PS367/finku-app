@@ -26,7 +26,7 @@ import kotlinx.coroutines.runBlocking
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     private val viewModel by viewModels<ProfileViewModel> {
-        ViewModelFactory.getInstance(requireContext())
+        ViewModelFactory(Injection.provideRepository(requireContext()))
     }
 
     override fun onCreateView(
