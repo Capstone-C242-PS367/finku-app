@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.capstone.finku.data.ViewModelFactory
+import com.capstone.finku.data.di.Injection
 import com.capstone.finku.data.pref.UserPreference
 import com.capstone.finku.data.pref.dataStore
 import com.capstone.finku.data.response.DataProfile
@@ -64,7 +65,7 @@ class ProfileFragment : Fragment() {
         lifecycleScope.launch {
             val user = userPreference.getSession().firstOrNull()
             if (user != null) {
-                viewModel.getDetailProfile(user.id, "Bearer ${user.token}")
+                viewModel.getDetailProfile(user.id)
 
                 viewModel.detailProfile.observe(viewLifecycleOwner) { profile ->
                     if (profile != null) {

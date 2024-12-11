@@ -39,10 +39,9 @@ interface ApiService {
         @Part file: MultipartBody.Part
     ): PredictResponse
 
-    @GET("users/{id}")
+    @GET("/users/{id}")
     suspend fun getUserProfile(
         @Path("id") id: String,
-        @Header("Authorization") token: String
     ): ProfileResponse
 
     @POST("/transactions")

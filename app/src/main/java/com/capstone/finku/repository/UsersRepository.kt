@@ -16,8 +16,8 @@ class UserRepository private constructor(
         return apiService.register(name, email, password)
     }
 
-    suspend fun getProfile(id: String, token: String): DataProfile? {
-        val response = apiService.getUserProfile(id, token)
+    suspend fun getProfile(id: String): DataProfile? {
+        val response = apiService.getUserProfile(id)
         if (response.status == "success") {
             Log.d("UserRepository", "fetch profile: ${response.data}")
             return response.data

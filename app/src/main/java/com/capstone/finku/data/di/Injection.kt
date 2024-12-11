@@ -15,6 +15,7 @@ object Injection {
         val pref = UserPreference.getInstance(context.dataStore)
         val user = runBlocking { pref.getSession().first() }
         val apiService = ApiConfig.getApiService(user.token)
+        Log.d("TOKEN REPOSITORY", user.token)
         return UserRepository.getInstance(pref, apiService)
     }
 

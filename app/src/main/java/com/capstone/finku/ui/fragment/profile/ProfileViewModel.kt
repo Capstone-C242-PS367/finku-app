@@ -13,10 +13,10 @@ class ProfileViewModel(private val repository: UserRepository) : ViewModel() {
     private val _profileDetail = MutableLiveData<DataProfile?>()
     val detailProfile: LiveData<DataProfile?> = _profileDetail
 
-    fun getDetailProfile(id: String, token: String) {
+    fun getDetailProfile(id: String) {
         viewModelScope.launch {
             try {
-                val result = repository.getProfile(id, token)
+                val result = repository.getProfile(id)
                 if (result != null) {
                     Log.d("ProfileViewModel", "Data fetched successfully: ,${result.name}, ${result.email}, ${result.id}")
                     _profileDetail.value = result

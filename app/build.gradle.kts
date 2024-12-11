@@ -67,4 +67,6 @@ dependencies {
     implementation(libs.jetbrains.kotlinx.coroutines.android)
     implementation(libs.acpdfview)
     implementation(kotlin("script-runtime"))
+    implementation(libs.eazegraph)
+    implementation(libs.library)
 }
