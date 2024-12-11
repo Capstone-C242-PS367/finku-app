@@ -5,6 +5,7 @@ import com.capstone.finku.data.response.LoginResponse
 import com.capstone.finku.data.response.PredictResponse
 import com.capstone.finku.data.response.ProfileResponse
 import com.capstone.finku.data.response.RegisterResponse
+import com.capstone.finku.data.response.TransactionListResponse
 import com.capstone.finku.data.response.TransactionResponse
 import okhttp3.MultipartBody
 import retrofit2.http.Body
@@ -48,4 +49,9 @@ interface ApiService {
     suspend fun storeTransaction(
         @Body requestBody: PostTransactionRequest
     ): TransactionResponse
+
+    @GET("/transactions/user/{user_id}")
+    suspend fun getTransactions(
+        @Path("user_id") userId: String
+    ): TransactionListResponse
 }

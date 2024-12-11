@@ -7,4 +7,6 @@
     <color name="green">#4CAF50</color>
     <color name="primary">#1B84FF</color>
     <color name="info">#7239EA</color>
+    <color name="danger">#F8285A</color>
+    <color name="success">#17C653</color>
 </resources>

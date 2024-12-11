@@ -3,6 +3,7 @@ package com.capstone.finku.repository
 import com.capstone.finku.data.request.PostTransactionRequest
 import com.capstone.finku.data.response.PredictResponse
 import com.capstone.finku.data.response.ResultItem
+import com.capstone.finku.data.response.TransactionListResponse
 import com.capstone.finku.data.response.TransactionResponse
 import com.capstone.finku.data.retrofit.ApiService
 import okhttp3.MultipartBody
@@ -17,6 +18,10 @@ class TransactionRepository private constructor(
 
     suspend fun storeTransaction(bodyTransactionRequest: PostTransactionRequest): TransactionResponse {
         return apiService.storeTransaction(bodyTransactionRequest)
+    }
+
+    suspend fun getTransactions(id: String): TransactionListResponse {
+        return apiService.getTransactions(id)
     }
 
     companion object {
