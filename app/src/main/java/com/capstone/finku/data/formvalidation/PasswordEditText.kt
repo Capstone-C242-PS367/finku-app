@@ -8,9 +8,7 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
-import androidx.core.content.ContextCompat
 import com.capstone.finku.R
-
 
 class PasswordEditText @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
@@ -23,7 +21,6 @@ class PasswordEditText @JvmOverloads constructor(
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 error = if (s.length < 8) context.getString(R.string.password_error) else null
-                if (s.isNotEmpty()) showClearButton() else hideClearButton()
             }
 
             override fun afterTextChanged(s: Editable) {}
@@ -37,7 +34,6 @@ class PasswordEditText @JvmOverloads constructor(
             val isClearButtonClicked = event.x > clearButtonStart
             if (isClearButtonClicked) {
                 if (event.action == MotionEvent.ACTION_DOWN) {
-                    showClearButton()
                     return true
                 }
                 if (event.action == MotionEvent.ACTION_UP) {
@@ -50,11 +46,6 @@ class PasswordEditText @JvmOverloads constructor(
         return false
     }
 
-    private fun showClearButton() {
-        val clearButtonImage = ContextCompat.getDrawable(context, R.drawable.baseline_close_24)
-        setButtonDrawables(endOfTheText = clearButtonImage)
-    }
-
     private fun hideClearButton() {
         setButtonDrawables()
     }
@@ -65,6 +56,11 @@ class PasswordEditText @JvmOverloads constructor(
         endOfTheText: Drawable? = null,
         bottomOfTheText: Drawable? = null
     ) {
-        setCompoundDrawablesWithIntrinsicBounds(startOfTheText, topOfTheText, endOfTheText, bottomOfTheText)
+        setCompoundDrawablesWithIntrinsicBounds(
+            startOfTheText,
+            topOfTheText,
+            endOfTheText,
+            bottomOfTheText
+        )
     }
 }
